@@ -4,12 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ARMLibrary"
+        xmlns:viewModel="clr-namespace:ARMLibrary.MVVM.ViewModel"
         mc:Ignorable="d"
-        Height="600" Width="920"
+        Height="600" Width="1000"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        FontFamily="Fonts/#Poppins">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
 
     <Border  Background="#272537"
              CornerRadius="15">
@@ -39,6 +45,39 @@
                    Foreground="White"
                    FontSize="22"
                    Margin="50,0,0,0"/>
+            <StackPanel Grid.Row="0"
+                        Grid.Column="1"
+                        Width="490"
+                        HorizontalAlignment="Right">
+                <Grid Height="70"
+                      Background="Transparent"
+                    MouseDown="Toolbar_MouseDown">
+                    <Image Name="ExBtn"
+                       HorizontalAlignment="Right"
+                       Height="25" 
+                       Width="25" 
+                       Margin="0,0,10,0" 
+                       MouseDown="ExBtn_MouseDown">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Images/reject.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName=ExBtn}"
+                                             Value="True">
+                                        <Setter Property="Source" Value="Images/OnReject.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                        <Image.Effect>
+                            <BlurEffect Radius="1">
+                            </BlurEffect>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+               
+                
+            </StackPanel>
 
 
             <StackPanel Grid.Row="1">
@@ -46,12 +85,15 @@
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"
+                             Command="{Binding HomeViewCommand}"/>
                 <RadioButton Content="Books"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding DiscoveryViewCommand}"/>
                 <RadioButton Content="Readers"
                              Height="50"
                              Foreground="White"
@@ -67,6 +109,11 @@
                      Margin="5"
                      Grid.Column="1"
                      Style="{StaticResource ModernTextox}"/>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
 
         </Grid>
 

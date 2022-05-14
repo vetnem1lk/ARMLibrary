@@ -13,29 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ARMLibrary
+namespace ARMLibrary.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для DiscoveryView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DiscoveryView : UserControl
     {
-        public MainWindow()
+        public DiscoveryView()
         {
             InitializeComponent();
         }
-
-        private void ExBtn_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }
-        private void Toolbar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-
-            // Begin dragging the window
-            this.DragMove();
-        }
-
     }
 }

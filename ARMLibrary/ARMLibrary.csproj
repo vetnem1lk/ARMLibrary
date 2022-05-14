@@ -8,18 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Poppins-Regular.ttf" />
+    <None Remove="Images\avatar.png" />
+    <None Remove="Images\books.png" />
+    <None Remove="Images\OnReject.png" />
     <None Remove="Images\open-book.png" />
+    <None Remove="Images\reject.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\Poppins-Regular.ttf" />
+    <Resource Include="Images\avatar.png" />
+    <Resource Include="Images\books.png" />
+    <Resource Include="Images\OnReject.png" />
     <Resource Include="Images\open-book.png" />
+    <Resource Include="Images\reject.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Fonts\" />
     <Folder Include="MVVM\Model\" />
-    <Folder Include="MVVM\View\" />
-    <Folder Include="MVVM\ViewModel\" />
   </ItemGroup>
 
 </Project>
