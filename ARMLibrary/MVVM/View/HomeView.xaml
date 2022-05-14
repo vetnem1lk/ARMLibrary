@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ARMLibrary.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1000" d:DesignWidth="800">
     <StackPanel>
         <TextBlock Text="Discover"
                    Foreground="White"
@@ -68,7 +68,7 @@
                         <GradientStop Color="#ffc554" Offset="0.0"/>
                         <GradientStop Color="#ffb73a" Offset="1"/>
                     </LinearGradientBrush>
-                    
+
 
                 </Border.Background>
                 <StackPanel>
@@ -119,27 +119,191 @@
                    HorizontalAlignment="Left"
                   Margin="0,0,0,20"/>
 
-            <StackPanel Orientation="Horizontal">
-                <Border Width="200"
+            <StackPanel 
+                        Orientation="Horizontal">
+                <Border x:Name="addBPanel"
+                        Width="200"
                         Height="150"
                         Background="#844eff"
                         CornerRadius="10"
-                        Margin="0,0,0,0"/>
+                        Margin="0,0,0,0"
+                        Cursor="Hand">
+                    <StackPanel VerticalAlignment="Center">
+                        <Image Name="addBkBtn"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Height="50" 
+                               Width="50">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="/Images/plus.png"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsMouseOver, ElementName=addBPanel}"
+                                             Value="True">
+                                            <Setter Property="Source" Value="/Images/PlusOn.png"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                            <Image.Effect>
+                                <BlurEffect Radius="1">
+                                </BlurEffect>
+                            </Image.Effect>
+
+                        </Image>
+                        <TextBlock  x:Name="addBookTxt"
+                               Text="ADD BOOK"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               >
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsMouseOver, ElementName=addBPanel}"
+                                             Value="True">
+                                            <Setter Property="Foreground" Value="#5bc3ff"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                            <TextBlock.Effect>
+                                <BlurEffect Radius="1">
+
+                                </BlurEffect>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                            
+                        
+                    </StackPanel>
+                   
+                </Border>
                 <Border Width="150"
                         Height="150"
                         Background="#4e99ff"
-                        CornerRadius="10"/>
+                        CornerRadius="10"
+                        x:Name="GivePanel"
+                        Cursor="Hand">
+                    <TextBlock Text="GIVE OUT&#x0a; A BOOK"
+                               FontSize="22"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontFamily="/Fonts/#Poppins-Bold">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName=GivePanel}"
+                                             Value="True">
+                                        <Setter Property="Foreground" Value="#272537"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                        <TextBlock.Effect>
+                            <BlurEffect Radius="1">
+                            </BlurEffect>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Border>
                 <Border Width="150"
                         Height="150"
                         Background="#4eff91"
-                        CornerRadius="10"/>
-                <Border Width="200"
+                        CornerRadius="10"
+                        x:Name="WPanel"
+                        Cursor="Hand">
+                    <TextBlock Text="WRITE-OFF&#x0a;  A BOOK"
+                               FontSize="22"
+                               FontFamily="/Fonts/#Poppins-Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName=WPanel}"
+                                             Value="True">
+                                        <Setter Property="Foreground" Value="#272537"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                        <TextBlock.Effect>
+                            <BlurEffect Radius="1">
+
+                            </BlurEffect>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Border>
+                <Border x:Name="addRPanel"
+                        Width="200"
                         Height="150"
-                        Background="#bcff40"
-                        CornerRadius="10"/>
+                        Background="#6A5ACD"
+                        CornerRadius="10"
+                        Cursor="Hand">
+                    <StackPanel VerticalAlignment="Center">
+                        <Image Name="addRkBtn"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Height="50" 
+                               Width="50">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="/Images/plus.png"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsMouseOver, ElementName=addRPanel}"
+                                             Value="True">
+                                            <Setter Property="Source" Value="/Images/PlusOn.png"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                            <Image.Effect>
+                                <BlurEffect Radius="1">
+                                </BlurEffect>
+                            </Image.Effect>
+
+                        </Image>
+                        <TextBlock 
+                               Text="ADD READER"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               >
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsMouseOver, ElementName=addRPanel}"
+                                             Value="True">
+                                            <Setter Property="Foreground" Value="#5bc3ff"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                            <TextBlock.Effect>
+                                <BlurEffect Radius="1">
+
+                                </BlurEffect>
+                            </TextBlock.Effect>
+                        </TextBlock>
+
+
+                    </StackPanel>
+                </Border>
             </StackPanel>
 
         </StackPanel>
 
+        <StackPanel>
+            <TextBlock Text="More Details"
+                   Foreground="White"
+                   FontSize="20"
+                   HorizontalAlignment="Left"
+                  Margin="0,20,0,2000"/>
+        </StackPanel>
+
     </StackPanel>
+    
 </UserControl>

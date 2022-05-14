@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ARMLibrary.MVVM.ViewModel
 {
-    internal class DiscoveryViewModel
+    internal class BooksViewModel
     {
     }
 }

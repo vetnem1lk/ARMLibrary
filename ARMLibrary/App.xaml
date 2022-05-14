@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ARMLibrary"
-             xmlns:viewModel="clr-namespace:ARMLibrary.MVVM.ViewModel" xmlns:view="clr-namespace:ARMLibrary.MVVM.View"
+             xmlns:viewModel="clr-namespace:ARMLibrary.MVVM.ViewModel" 
+             xmlns:view="clr-namespace:ARMLibrary.MVVM.View"
              StartupUri="MainWindow.xaml"
              >
     <Application.Resources>
@@ -10,13 +11,18 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ScrollViewerTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModel:DiscoveryViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:BooksViewModel}">
                 <view:DiscoveryView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ReadersViewModel}">
+                <view:ReadersView/>
+            </DataTemplate>
+            
             
         </ResourceDictionary>
     </Application.Resources>

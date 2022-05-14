@@ -7,10 +7,12 @@ namespace ARMLibrary.MVVM.ViewModel
     {
 
         public RelayCommand HomeViewCommand { get; set; }
-        public RelayCommand DiscoveryViewCommand { get; set; }
+        public RelayCommand BooksViewCommand { get; set; }
+        public RelayCommand ReadersViewCommand { get; set; }
 
         public HomeViewModel? HomeVM { get; set; }
-        public DiscoveryViewModel? DiscoveryVM { get; set; }
+        public BooksViewModel? BooksVM { get; set; }
+        public ReadersViewModel? ReadersVM { get; set; }
 
         private object? _currentView;
 
@@ -27,16 +29,21 @@ namespace ARMLibrary.MVVM.ViewModel
         public MainViewModel()
         {
             HomeVM = new HomeViewModel();
-            DiscoveryVM = new DiscoveryViewModel();
+            BooksVM = new BooksViewModel();
+            ReadersVM = new ReadersViewModel();
             CurrentView = HomeVM;
 
             HomeViewCommand = new RelayCommand(o =>
             {
                 CurrentView = HomeVM;
             });
-            DiscoveryViewCommand = new RelayCommand(o =>
+            BooksViewCommand = new RelayCommand(o =>
             {
-                CurrentView = DiscoveryVM;
+                CurrentView = BooksVM;
+            });
+            ReadersViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = ReadersVM;
             });
         }
 

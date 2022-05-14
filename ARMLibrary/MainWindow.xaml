@@ -6,13 +6,12 @@
         xmlns:local="clr-namespace:ARMLibrary"
         xmlns:viewModel="clr-namespace:ARMLibrary.MVVM.ViewModel"
         mc:Ignorable="d"
-        Height="600" Width="1000"
+        Height="700" Width="1000"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
         FontFamily="Fonts/#Poppins">
-
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
@@ -43,11 +42,11 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    Foreground="White"
-                   FontSize="22"
+                   FontSize="32"
                    Margin="50,0,0,0"/>
             <StackPanel Grid.Row="0"
                         Grid.Column="1"
-                        Width="490"
+                        Width="800"
                         HorizontalAlignment="Right">
                 <Grid Height="70"
                       Background="Transparent"
@@ -87,33 +86,39 @@
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
-                             Command="{Binding HomeViewCommand}"/>
-                <RadioButton Content="Books"
+                             Command="{Binding HomeViewCommand}"
+                             Cursor="Hand"/>
+                <RadioButton Content="Books" Cursor="Hand"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding DiscoveryViewCommand}"/>
-                <RadioButton Content="Readers"
+                             Command="{Binding BooksViewCommand}"/>
+                <RadioButton Content="Readers" Cursor="Hand"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ReadersViewCommand}"/>
 
             </StackPanel>
 
-            <TextBox Width="250"
+            <TextBox Width="400"
                      Height="40"
+                     Margin="10,0,0,0"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"
-                     Margin="5"
                      Grid.Column="1"
                      Style="{StaticResource ModernTextox}"/>
+            <ScrollViewer Grid.Row="1"
+                          Grid.Column="1"
+                      Margin="10"   
+                      >
 
-            <ContentControl Grid.Row="1"
-                            Grid.Column="1"
-                            Margin="10"
-                            Content="{Binding CurrentView}"/>
+                <ContentControl Content="{Binding CurrentView}"/>
+            </ScrollViewer>
+
+
 
         </Grid>
 
