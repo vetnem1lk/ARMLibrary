@@ -23,6 +23,7 @@ namespace ARMLibrary.MVVM.View
         public HomeView()
         {
             InitializeComponent();
+           
         }
     }
 }

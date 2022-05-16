@@ -5,6 +5,7 @@ namespace ARMLibrary.MVVM.ViewModel
 {
     internal class MainViewModel : ObservableObject
     {
+        public RelayCommand ViewCommand { get; set; }
 
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand BooksViewCommand { get; set; }
@@ -14,13 +15,27 @@ namespace ARMLibrary.MVVM.ViewModel
         public BooksViewModel? BooksVM { get; set; }
         public ReadersViewModel? ReadersVM { get; set; }
 
+        private string _text;
+        public string CurrentText
+        {
+            get
+            {
+                return _text;
+            }
+            set
+            {
+                _text = value;
+                OnPropertyChanged();
+            }
+        }
+
         private object? _currentView;
 
         public object CurrentView
         {
-            get { return _currentView; }
-            set 
-            { 
+            get => _currentView;
+            set
+            {
                 _currentView = value;
                 OnPropertyChanged();
             }
@@ -28,6 +43,7 @@ namespace ARMLibrary.MVVM.ViewModel
 
         public MainViewModel()
         {
+            
             HomeVM = new HomeViewModel();
             BooksVM = new BooksViewModel();
             ReadersVM = new ReadersViewModel();
@@ -45,6 +61,7 @@ namespace ARMLibrary.MVVM.ViewModel
             {
                 CurrentView = ReadersVM;
             });
+            CurrentText = "Search";
         }
 
 

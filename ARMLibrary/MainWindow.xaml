@@ -103,7 +103,8 @@
 
             </StackPanel>
 
-            <TextBox Width="400"
+            <TextBox x:Name="SearchBoxMenu"
+                     Width="400"
                      Height="40"
                      Margin="10,0,0,0"
                      VerticalAlignment="Center"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ARMLibrary.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,11 +20,15 @@ namespace ARMLibrary
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    { 
         public MainWindow()
         {
-            InitializeComponent();
+        
+        InitializeComponent();
+            
         }
+
+
 
         private void ExBtn_MouseDown(object sender, MouseButtonEventArgs e)
         {
