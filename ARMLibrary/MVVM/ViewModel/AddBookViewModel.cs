@@ -31,11 +31,8 @@ namespace ARMLibrary.MVVM.ViewModel
         
         
         public AddBookViewModel()
-        {
-            textBox.Name = "NameBook";
-            if (textBox.Name == "NameBook")
+        {            
             CurrentText = "nameBook";
-
         }
     }
 }
