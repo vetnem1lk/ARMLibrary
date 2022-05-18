@@ -22,11 +22,6 @@
             <DataTemplate DataType="{x:Type viewModel:ReadersViewModel}">
                 <view:ReadersView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModel:AddBookViewModel}">
-                    <view:AddBookWindow/>
-            </DataTemplate>
-            
-            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

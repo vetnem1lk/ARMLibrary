@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ARMLibrary.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace ARMLibrary.MVVM.View
         public AddBookWindow()
         {
             InitializeComponent();
+            DataContext = new AddBookViewModel();
         }
 
         private void ExBtn_MLBDown(object sender, MouseButtonEventArgs e)

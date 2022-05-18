@@ -5,7 +5,7 @@ namespace ARMLibrary.MVVM.ViewModel
 {
     internal class MainViewModel : ObservableObject
     {
-        public RelayCommand ViewCommand { get; set; }
+        
 
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand BooksViewCommand { get; set; }
@@ -61,7 +61,10 @@ namespace ARMLibrary.MVVM.ViewModel
             {
                 CurrentView = ReadersVM;
             });
-            CurrentText = "Search";
+            
+                CurrentText = "Search";
+            
+            
         }
 
 

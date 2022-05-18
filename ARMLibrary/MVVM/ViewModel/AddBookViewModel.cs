@@ -5,11 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace ARMLibrary.MVVM.ViewModel
 {
-    class AddBookViewModel : ObservableObject
+    internal class AddBookViewModel : ObservableObject
     {
+
+     
+
         private string _text;
         public string CurrentText
         {
@@ -23,13 +27,15 @@ namespace ARMLibrary.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
+        TextBox textBox = new TextBox();
         
-        AddBookWindow win = new AddBookWindow();
         
         public AddBookViewModel()
         {
-            string curText = win.InputgNameBook.Text;
-            CurrentText = curText;
+            textBox.Name = "NameBook";
+            if (textBox.Name == "NameBook")
+            CurrentText = "nameBook";
+
         }
     }
 }
