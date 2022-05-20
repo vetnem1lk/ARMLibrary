@@ -11,9 +11,6 @@ namespace ARMLibrary.MVVM.ViewModel
 {
     internal class AddBookViewModel : ObservableObject
     {
-
-     
-
         private string _text;
         public string CurrentText
         {
@@ -27,12 +24,10 @@ namespace ARMLibrary.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
-        TextBox textBox = new TextBox();
-        
+
         
         public AddBookViewModel()
-        {            
-            CurrentText = "nameBook";
+        {
         }
     }
 }

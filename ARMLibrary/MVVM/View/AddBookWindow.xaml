@@ -32,73 +32,139 @@
                         VerticalAlignment="Top" 
                         Background="Transparent"
                         MouseDown="ToolBart_MouseDown">
-                <Image Name="ExBtn"
+                    <Image Name="ExBtn"
                        HorizontalAlignment="Right"
                        Height="25" 
                        Width="25" 
                        Margin="0,5,10,0" MouseLeftButtonDown="ExBtn_MLBDown" 
                        >
-                    <Image.Style>
-                        <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="/Images/reject.png"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=ExBtn}"
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="/Images/reject.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName=ExBtn}"
                                              Value="True">
-                                    <Setter Property="Source" Value="/Images/OnReject.png"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Style>
-                </Image>
-            </StackPanel>
+                                        <Setter Property="Source" Value="/Images/OnReject.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </StackPanel>
                 <StackPanel Margin="5">
                     <TextBlock Text="Add a book"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Top"
-                           Margin="0,10,0,0"
+                           Margin="0,10,0,10"
                            Foreground="White"
                            FontSize="22"/>
-                    
-                        <TextBox x:Name="nameBook"
-                             Width="400"
-                             Height="40"
-                             Margin="0,25,0,0"
-                             VerticalAlignment="Center"
-                             HorizontalAlignment="Center"
-                             Style="{StaticResource ModernTextox}"
-                     />
-                        
-                    
-                    
-                    <TextBox  x:Name="authorName"
-                     Width="400"
-                     Height="40"
-                     Margin="0,25,0,0"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Center"
-                     Style="{StaticResource ModernTextox}"/>
-                    <TextBox  x:Name="seriesName"
-                     Width="400"
-                     Height="40"
-                     Margin="0,25,0,0"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Center"
-                     Style="{StaticResource ModernTextox}"/>
-                    
-                    <DatePicker SelectedDateFormat="Short" 
-                                Width="200"
+                    <StackPanel Margin="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top">
+                        <TextBlock Text="Enter book title"
+                                   Foreground="DarkGray"
+                                   FontSize="14"/>
+                        <TextBox Style="{StaticResource ModernTextox}"
+                                 Width="400"
+                                 Height="40"
+                                 Margin="0,0,0,0"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Margin="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top">
+                        <TextBlock Text="Enter author name"
+                                   Foreground="DarkGray"
+                                   FontSize="14"/>
+                        <TextBox Style="{StaticResource ModernTextox}"
+                                 Width="400"
+                                 Height="40"
+                                 Margin="0,0,0,0"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Margin="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top">
+                        <TextBlock Text="Enter publisher name"
+                                   Foreground="DarkGray"
+                                   FontSize="14"/>
+                        <TextBox Style="{StaticResource ModernTextox}"
+                                 Width="400"
+                                 Height="40"
+                                 Margin="0,0,0,0"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Margin="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top">
+                        <TextBlock Text="Select publication date"
+                                   Foreground="DarkGray"
+                                   FontSize="14"/>
+                        <DatePicker SelectedDateFormat="Short" 
+                                Width="250"
+                                FontSize="20"
                                 HorizontalAlignment="Left"
-                     Margin="10,25,0,0"
                                 Background="#353340"
                                 SelectedDate="1/01/22"
-                  FirstDayOfWeek="Monday"
+                                FirstDayOfWeek="Monday"
                                 />
+                    </StackPanel>
+
+                    <Border x:Name="addBPanel"
+                        Width="150"
+                        Height="50"
+                        Background="#22202f"
+  
+                            BorderThickness="1"
+                        CornerRadius="10"
+                        Margin="0,50,0,0"
+                        Cursor="Hand">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="BorderBrush" Value="DarkGray"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName=addBPanel}"
+                                             Value="True">
+                                        <Setter Property="BorderBrush" Value="White"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <StackPanel VerticalAlignment="Center">
+
+                            <TextBlock  x:Name="DONE"
+                               Text="DONE"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               >
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Foreground" Value="DarkGray"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsMouseOver, ElementName=addBPanel}"
+                                             Value="True">
+                                                <Setter Property="Foreground" Value="White"/>
+                                                
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                                
+                            </TextBlock>
+
+
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
             </Grid>
 
 
         </Border>
     </Grid>
-    
-    
+
+
 </Window>

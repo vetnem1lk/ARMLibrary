@@ -110,7 +110,8 @@
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"
                      Grid.Column="1"
-                     Style="{StaticResource ModernTextox}"/>
+                     Style="{StaticResource ModernTextox}"
+                     />
             <ScrollViewer Grid.Row="1"
                           Grid.Column="1"
                       Margin="10"   
