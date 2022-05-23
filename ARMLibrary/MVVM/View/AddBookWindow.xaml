@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:ARMLibrary.MVVM.View"
+        xmlns:core ="clr-namespace:ARMLibrary.MVVM.Model" xmlns:viewmodel="clr-namespace:ARMLibrary.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:AddBookViewModel}"
         mc:Ignorable="d"
         Height="500" Width="450"
         WindowStyle="None"
@@ -12,6 +13,9 @@
         Background="Transparent"
         AllowsTransparency="True"
         FontFamily="Fonts/#Poppins">
+    <Window.Resources>
+        <core:ListPublisher x:Key="ListPublisher"></core:ListPublisher>
+    </Window.Resources>
     <Grid 
 
           >
@@ -64,25 +68,33 @@
                         <TextBlock Text="Enter book title"
                                    Foreground="DarkGray"
                                    FontSize="14"/>
-                        <TextBox Style="{StaticResource ModernTextox}"
+                        <TextBox Name="TitleBox"
+                                 
+                                 FontSize="18"
                                  Width="400"
                                  Height="40"
                                  Margin="0,0,0,0"
                                  VerticalAlignment="Center"
-                                 HorizontalAlignment="Center"/>
+                                 HorizontalAlignment="Center">
+                                 
+                        </TextBox>
                     </StackPanel>
                     <StackPanel Margin="10"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Top">
-                        <TextBlock Text="Enter author name"
+                        <TextBlock 
+                                   Text="Enter author name"
                                    Foreground="DarkGray"
                                    FontSize="14"/>
-                        <TextBox Style="{StaticResource ModernTextox}"
+                        <TextBox Name="AuthorBox"
+                                 
+                                 FontSize="18"
                                  Width="400"
                                  Height="40"
                                  Margin="0,0,0,0"
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Center"/>
+                            
                     </StackPanel>
                     <StackPanel Margin="10"
                                 HorizontalAlignment="Center"
@@ -90,12 +102,15 @@
                         <TextBlock Text="Enter publisher name"
                                    Foreground="DarkGray"
                                    FontSize="14"/>
-                        <TextBox Style="{StaticResource ModernTextox}"
-                                 Width="400"
-                                 Height="40"
-                                 Margin="0,0,0,0"
-                                 VerticalAlignment="Center"
-                                 HorizontalAlignment="Center"/>
+                        <ComboBox x:Name="PublisherIdBox"
+                                  Height="40"
+                                  Width="400"
+                                  IsEditable="True"
+                                  Background="#353340"
+                                  ItemsSource="{Binding Source={StaticResource ListPublisher}}"
+                                  DisplayMemberPath="PublisherName"
+                                  SelectedValuePath="Id"
+                        />
                     </StackPanel>
                     <StackPanel Margin="10"
                                 HorizontalAlignment="Center"
@@ -103,25 +118,29 @@
                         <TextBlock Text="Select publication date"
                                    Foreground="DarkGray"
                                    FontSize="14"/>
-                        <DatePicker SelectedDateFormat="Short" 
+                        <DatePicker Name="ReleaseDatePicker" 
+                                SelectedDateFormat="Short" 
                                 Width="250"
                                 FontSize="20"
-                                HorizontalAlignment="Left"
+                                SelectedDate="01.01.2022"
                                 Background="#353340"
-                                SelectedDate="1/01/22"
-                                FirstDayOfWeek="Monday"
-                                />
+                        />
                     </StackPanel>
+                    <Button Width="50"
+                            Height="50"
+                            Content="Done"
+                            Command="{Binding BooksViewCommand}"/>
 
                     <Border x:Name="addBPanel"
                         Width="150"
                         Height="50"
                         Background="#22202f"
+                        
   
-                            BorderThickness="1"
+                        BorderThickness="1"
                         CornerRadius="10"
                         Margin="0,50,0,0"
-                        Cursor="Hand">
+                        Cursor="Hand" MouseLeftButtonDown="MLBDown_Done">
                         <Border.Style>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="BorderBrush" Value="DarkGray"/>

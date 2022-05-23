@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#1B1B1B" Loaded="UCLoaded">
     <UserControl.Resources>
-        <core:ListPublisher x:Key="listPublisher"/>
+        <core:ListPublisher x:Key="ListPublisher"/>
         <DataTemplate x:Key="DateTemplate">
             <TextBlock Text="{Binding Release, StringFormat={}{0:yyyy}}"
                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -21,20 +21,25 @@
     <Grid>
         <DataGrid x:Name="DataGridBooks"
                   Background="#272537"
+                  
                       ItemsSource="{Binding}"
                       AutoGenerateColumns="False"
                       RowBackground="#272537" 
                       AlternatingRowBackground="#1B1B1B"
-                      BorderBrush="DarkGray" 
-                      BorderThickness="3"
-                      Margin="0,50,0,0"
-                      HorizontalAlignment="Left"
+                      BorderBrush="DarkGray"
+                      Margin="0,0,15,0"
+                      ColumnWidth="*"
                       Foreground="White"
                       FontSize="18"
-                      IsReadOnly="True">
+                  IsReadOnly="False">
+            <DataGrid.RowHeaderStyle>
+                <Style TargetType="{x:Type DataGridRowHeader}">
+                    <Setter Property="Background" Value="#1B1B1B"/>
+                </Style>
+            </DataGrid.RowHeaderStyle>
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="#1B1B1B"/>
+                    <Setter Property="Background" Value="DarkGray"/>
                 </Style>
             </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
@@ -48,9 +53,9 @@
                                         CellTemplate="{StaticResource DateTemplate}"
                                         CellEditingTemplate="{StaticResource EditingDateTemplate}"/>
                 <DataGridComboBoxColumn Header="Publisher"
-                                        ItemsSource="{Binding Source={StaticResource listPublisher}}"
+                                        ItemsSource="{Binding Source={StaticResource ListPublisher}}"
                                         DisplayMemberPath="PublisherName"
-                                        SelectedValueBinding="{Binding Path=PiblisherId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectedValueBinding="{Binding Path=PublisherId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         SelectedValuePath="Id"/>
             </DataGrid.Columns>
         </DataGrid>

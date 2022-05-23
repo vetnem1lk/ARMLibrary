@@ -9,22 +9,27 @@ namespace ARMLibrary.MVVM.ViewModel
 {
     internal class HomeViewModel : ObservableObject
     {
-        private string _text;
-        public string CurrentText
+        public static ARM_B023Context dbContext { get; set; }
+
+        private string _totalBooks;
+        public string TotalBooks
         {
             get
             {
-                return _text;
+                return _totalBooks;
             }
             set
             {
-                _text = value;
-                OnPropertyChanged();
+                _totalBooks = value;
+                OnPropertyChanged(TotalBooks);
             }
         }
+
+
         public HomeViewModel()
         {
-            CurrentText = "Name";
+            dbContext = new ARM_B023Context();
+            TotalBooks = dbContext.Books.Count().ToString();
         }
     }
 }

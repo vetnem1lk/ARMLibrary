@@ -88,7 +88,8 @@
                              IsChecked="True"
                              Command="{Binding HomeViewCommand}"
                              Cursor="Hand"/>
-                <RadioButton Content="Books" Cursor="Hand"
+                <RadioButton Name="OpenBooks"
+                             Content="Books" Cursor="Hand"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
@@ -117,7 +118,8 @@
                       Margin="10"   
                       >
 
-                <ContentControl Content="{Binding CurrentView}"/>
+                <ContentControl Name="ContentControlMain" 
+                    Content="{Binding Path=CurrentView, UpdateSourceTrigger=PropertyChanged}"/>
             </ScrollViewer>
 
 

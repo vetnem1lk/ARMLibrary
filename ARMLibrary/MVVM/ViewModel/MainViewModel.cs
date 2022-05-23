@@ -24,7 +24,7 @@ namespace ARMLibrary.MVVM.ViewModel
             set
             {
                 _text = value;
-                OnPropertyChanged();
+                OnPropertyChanged(CurrentText);
             }
         }
 
@@ -36,7 +36,7 @@ namespace ARMLibrary.MVVM.ViewModel
             set
             {
                 _currentView = value;
-                OnPropertyChanged();
+                OnPropertyChanged("CurrentView");
             }
         }
 

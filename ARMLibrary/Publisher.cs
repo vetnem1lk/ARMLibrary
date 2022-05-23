@@ -12,6 +12,18 @@ namespace ARMLibrary
             Books = new HashSet<Book>();
         }
 
+        private static Publisher _publisher;
+
+        public static Publisher CreatePublisher(string name)
+        {
+            _publisher = new Publisher()
+            {
+                PublisherName = name
+                
+            };
+            return _publisher;
+        }
+
         public int Id { get; set; }
         public string PublisherName { get; set; }
 
