@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,26 @@ namespace ARMLibrary.MVVM.View
     /// </summary>
     public partial class DiscoveryView : UserControl
     {
+        public static ARM_B023Context dbContext { get; set; }
+
+        ObservableCollection<Book> listBooks { get; set; }
+
         public DiscoveryView()
         {
+            dbContext = new ARM_B023Context();
             InitializeComponent();
+            listBooks = new ObservableCollection<Book>();
+        }
+
+        private void UCLoaded(object sender, RoutedEventArgs e)
+        {
+            var books = dbContext.Books;
+            var queryBook = from book in books orderby book.Name select book;
+            foreach (Book book in queryBook)
+            {
+                listBooks.Add(book);
+            }
+            DataGridBooks.ItemsSource = listBooks;
         }
     }
 }

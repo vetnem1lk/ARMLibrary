@@ -72,19 +72,37 @@
 
                 </Border.Background>
                 <StackPanel>
-                    <TextBlock Text="Total books:"
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Total books:"
                                    Foreground="#272537"
                                    FontSize="25"
                                    Margin="20,10,10,0"/>
-                    <TextBlock Text="books available:"
+                        <TextBlock x:Name="TotalBooks"
+                                   Margin="0,10,0,0"
+                                   Foreground="#272537"
+                                   FontSize="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="books available:"
                                    Foreground="#272537"
                                    FontSize="18"
                                    Margin="20,20,10,0"/>
-                    <TextBlock Text="books from readers:"
+                        <TextBlock x:Name="AvailableBooks"
+                                   Margin="0,10,0,0"
+                                   Foreground="#272537"
+                                   FontSize="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="books from readers:"
                                    Foreground="#272537"
                                    FontSize="18"
                                    Margin="20,20,10,0"/>
-                    <Image Width="50"
+                        <TextBlock x:Name="ReadersBooks"
+                                   Margin="0,10,0,0"
+                                   Foreground="#272537"
+                                   FontSize="25"/>
+                    </StackPanel>
+                <Image Width="50"
                            Height="50"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Bottom"
@@ -297,18 +315,18 @@
         </StackPanel>
 
         <StackPanel>
-            <TextBlock Text="More Details"
+            <TextBlock Text="History"
                    Foreground="White"
                    FontSize="20"
                    HorizontalAlignment="Left"
                   Margin="0,20,0,0"/>
-            <TextBox Width="400"
+            <TextBlock Width="400"
                      Height="40"
-                     Margin="10,200,0,0"
+                     Margin="0,20,0,0"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"
                      Grid.Column="1"
-                     Style="{StaticResource ModernTextox}"/>
+                     x:Name="HistoryBlock"/>
         </StackPanel>
 
     </StackPanel>
