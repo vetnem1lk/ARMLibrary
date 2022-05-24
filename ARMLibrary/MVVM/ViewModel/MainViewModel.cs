@@ -36,7 +36,7 @@ namespace ARMLibrary.MVVM.ViewModel
             set
             {
                 _currentView = value;
-                OnPropertyChanged("CurrentView");
+                OnPropertyChanged();
             }
         }
 

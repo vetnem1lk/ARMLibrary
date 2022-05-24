@@ -11,23 +11,9 @@ namespace ARMLibrary.MVVM.ViewModel
 {
     internal class AddBookViewModel : ObservableObject
     {
-        public RelayCommand BooksViewCommand { get; set; }
-        public BooksViewModel? BooksVM { get; set; }
-        private object? _currentView;
-
-        
-        
-
-
-
         public AddBookViewModel()
         {
-            MainViewModel mvm = new MainViewModel();
-            BooksVM = new BooksViewModel();
-            BooksViewCommand = new RelayCommand(o =>
-            {
-                mvm.CurrentView = BooksVM;
-            });
+           
         }
     }
 }

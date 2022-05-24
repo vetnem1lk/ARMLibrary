@@ -86,14 +86,15 @@
                                    Text="Enter author name"
                                    Foreground="DarkGray"
                                    FontSize="14"/>
-                        <TextBox Name="AuthorBox"
-                                 
+                        <TextBox Name="AuthorBox"                     
                                  FontSize="18"
                                  Width="400"
-                                 Height="40"
                                  Margin="0,0,0,0"
+                                
                                  VerticalAlignment="Center"
-                                 HorizontalAlignment="Center"/>
+                                 HorizontalAlignment="Center">
+                            
+                        </TextBox>
                             
                     </StackPanel>
                     <StackPanel Margin="10"
@@ -103,7 +104,7 @@
                                    Foreground="DarkGray"
                                    FontSize="14"/>
                         <ComboBox x:Name="PublisherIdBox"
-                                  Height="40"
+                                  FontSize="18"
                                   Width="400"
                                   IsEditable="True"
                                   Background="#353340"
@@ -126,17 +127,11 @@
                                 Background="#353340"
                         />
                     </StackPanel>
-                    <Button Width="50"
-                            Height="50"
-                            Content="Done"
-                            Command="{Binding BooksViewCommand}"/>
-
+                    
                     <Border x:Name="addBPanel"
                         Width="150"
                         Height="50"
                         Background="#22202f"
-                        
-  
                         BorderThickness="1"
                         CornerRadius="10"
                         Margin="0,50,0,0"

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ARMLibrary.MVVM.View" xmlns:viewmodel="clr-namespace:ARMLibrary.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:HomeViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="1000" d:DesignWidth="800">
+             d:DesignHeight="1000" d:DesignWidth="800" Loaded="UCLoaded">
     <StackPanel>
         <TextBlock Text="Discover"
                    Foreground="White"
@@ -78,6 +78,7 @@
                                    FontSize="25"
                                    Margin="20,10,10,0"/>
                         <TextBlock x:Name="TotalBooks"
+                                  
                                    Text="{Binding TotalBooks, UpdateSourceTrigger=PropertyChanged}"
                                    Margin="0,10,0,0"
                                    Foreground="#272537"
@@ -315,21 +316,64 @@
 
         </StackPanel>
 
-        <StackPanel>
-            <TextBlock Text="History"
+        <StackPanel 
+                    >
+            <TextBlock Text="History: "
                    Foreground="White"
                    FontSize="20"
                    HorizontalAlignment="Left"
-                  Margin="0,20,0,0"/>
-            <TextBlock Width="400"
-                     Height="40"
-                     Margin="0,20,0,0"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Left"
-                     Grid.Column="1"
-                     x:Name="HistoryBlock"/>
-        </StackPanel>
+                   Margin="0,20,0,0"/>
+            <Border 
+                    CornerRadius="10"
+                    Width="745"
+                    HorizontalAlignment="Left"
+                    Margin="0,10,0,0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#ffc554" Offset="0.0"/>
+                        <GradientStop Color="#ffb73a" Offset="1"/>
+                    </LinearGradientBrush>
 
+
+                </Border.Background>
+                <StackPanel>
+                    
+                <DataGrid x:Name="HistoryGrid"
+                      AutoGenerateColumns="False"
+                      RowBackground="Transparent"
+                      BorderBrush="Transparent"
+                      GridLinesVisibility="None"
+                      Background="Transparent"
+                      Margin="10"
+                      IsReadOnly="True"
+                      
+                      MinRowHeight="15"
+                      ItemsSource="{Binding}"
+                      BorderThickness="0"
+                      Foreground="#272537"
+                      FontSize="18"
+                      >
+                        <DataGrid.RowHeaderStyle>
+                            <Style TargetType="{x:Type DataGridRowHeader}">
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Style>
+                        </DataGrid.RowHeaderStyle>
+                        <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Height" Value="0"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn 
+                                    Binding="{Binding Item, Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
     </StackPanel>
     
 </UserControl>

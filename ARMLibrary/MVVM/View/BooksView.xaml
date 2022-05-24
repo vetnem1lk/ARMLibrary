@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              xmlns:core ="clr-namespace:ARMLibrary.MVVM.Model"
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="#1B1B1B" Loaded="UCLoaded">
+             Background="Transparent" Loaded="UCLoaded">
     <UserControl.Resources>
         <core:ListPublisher x:Key="ListPublisher"/>
         <DataTemplate x:Key="DateTemplate">
@@ -21,7 +21,7 @@
     <Grid>
         <DataGrid x:Name="DataGridBooks"
                   Background="#272537"
-                  
+                  GridLinesVisibility="All"
                       ItemsSource="{Binding}"
                       AutoGenerateColumns="False"
                       RowBackground="#272537" 

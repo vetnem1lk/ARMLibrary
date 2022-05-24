@@ -10,23 +10,22 @@ namespace ARMLibrary
     {
         public ARM_B023Context()
         {
-            Database.EnsureCreated();
         }
 
         public ARM_B023Context(DbContextOptions<ARM_B023Context> options)
             : base(options)
         {
         }
-
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Publisher> Publishers { get; set; }
+        public virtual DbSet<History> Histories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=testDATA;");
+                optionsBuilder.UseSqlServer("Data Source=10.0.22.5;Initial Catalog=ARM_B023;User ID=ARM_B023;Password=ARM_023ka;");
             }
         }
 
@@ -70,6 +69,16 @@ namespace ARMLibrary
                 entity.Property(e => e.PublisherName)
                     .IsRequired()
                     .HasMaxLength(150)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<History>(entity =>
+            {
+                entity.ToTable("History");
+
+                entity.Property(e => e.Item)
+                    .IsRequired()
+                    .HasMaxLength(250)
                     .IsUnicode(false);
             });
 

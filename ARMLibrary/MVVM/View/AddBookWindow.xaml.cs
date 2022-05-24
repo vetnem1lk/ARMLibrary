@@ -66,6 +66,8 @@ namespace ARMLibrary.MVVM.View
                 int publisherID = id;
 
                 Book book = Book.CreateBook(title, author, releaseDateTime, publisherID);
+                History item = History.CreateHistory(title, author);
+                dbContext.Histories.Add(item);
                 dbContext.Books.Add(book);
                 dbContext.SaveChanges();
             }
@@ -73,8 +75,7 @@ namespace ARMLibrary.MVVM.View
             {
                 throw new Exception(ex.Message);
             }
-            MainViewModel mvm = new MainViewModel();
-            mvm.CurrentView = mvm.BooksVM;
+            
             Close();
         }
     }

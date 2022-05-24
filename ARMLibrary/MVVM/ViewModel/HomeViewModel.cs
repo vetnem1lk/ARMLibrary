@@ -21,7 +21,7 @@ namespace ARMLibrary.MVVM.ViewModel
             set
             {
                 _totalBooks = value;
-                OnPropertyChanged(TotalBooks);
+                OnPropertyChanged();
             }
         }
 
