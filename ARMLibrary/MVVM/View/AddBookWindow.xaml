@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:ARMLibrary.MVVM.View"
         xmlns:core ="clr-namespace:ARMLibrary.MVVM.Model" xmlns:viewmodel="clr-namespace:ARMLibrary.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:AddBookViewModel}"
         mc:Ignorable="d"
-        Height="500" Width="450"
+        Height="450" Width="400"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -19,16 +19,16 @@
     <Grid 
 
           >
-        <Border CornerRadius="15"
+        <Border CornerRadius="5"
             Background="White"
-                BorderThickness="10">
+                BorderThickness="5">
 
             <Border.Effect >
-                <BlurEffect Radius="10"/>
+                <BlurEffect Radius="5"/>
             </Border.Effect>
         </Border>
-        <Border CornerRadius="15"
-                BorderThickness="10"
+        <Border CornerRadius="5"
+                BorderThickness="5"
                 Margin="1"
                 Background="#272537">
             <Grid>
@@ -40,7 +40,7 @@
                        HorizontalAlignment="Right"
                        Height="25" 
                        Width="25" 
-                       Margin="0,5,10,0" MouseLeftButtonDown="ExBtn_MLBDown" 
+                       Margin="0,5,5,0" MouseLeftButtonDown="ExBtn_MLBDown" 
                        >
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
@@ -65,77 +65,77 @@
                     <StackPanel Margin="10"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Top">
-                        <TextBlock Text="Enter book title"
-                                   Foreground="DarkGray"
-                                   FontSize="14"/>
+                        
                         <TextBox Name="TitleBox"
-                                 
                                  FontSize="18"
-                                 Width="400"
+                                 Width="350"
                                  Height="40"
                                  Margin="0,0,0,0"
+                                 Tag="Enter book title"
                                  VerticalAlignment="Center"
-                                 HorizontalAlignment="Center">
-                                 
+                                 HorizontalAlignment="Center"
+                                 Style="{StaticResource TwitterTextBoxStyle}">
+                            
+
+
                         </TextBox>
                     </StackPanel>
                     <StackPanel Margin="10"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Top">
-                        <TextBlock 
-                                   Text="Enter author name"
+                        
+                        <TextBox Name="AuthorBox" 
+                                 Tag="Enter author name"
+                                 FontSize="18"
+                                 Width="350"
+                                 Margin="0,0,0,0"
+                                 Style="{StaticResource TwitterTextBoxStyle}"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">
+                            
+                        </TextBox>
+                            
+                    </StackPanel>
+                    <StackPanel Margin="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                >
+                        <TextBlock Text="Select publication date"
                                    Foreground="DarkGray"
                                    FontSize="14"/>
-                        <TextBox Name="AuthorBox"                     
-                                 FontSize="18"
-                                 Width="400"
-                                 Margin="0,0,0,0"
-                                
-                                 VerticalAlignment="Center"
-                                 HorizontalAlignment="Center">
-                            
-                        </TextBox>
-                            
-                    </StackPanel>
-                    <StackPanel Margin="10"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Top">
+                        <DatePicker Name="ReleaseDatePicker" 
+                                    SelectedDate="01.01.2022"
+                                    SelectedDateFormat="Short" 
+                                    Margin="0,0,0,10"
+                                    FontSize="20"
+                                    HorizontalContentAlignment="Center"
+                        />
                         <TextBlock Text="Enter publisher name"
                                    Foreground="DarkGray"
                                    FontSize="14"/>
                         <ComboBox x:Name="PublisherIdBox"
                                   FontSize="18"
-                                  Width="400"
+                                  
                                   IsEditable="True"
                                   Background="#353340"
                                   ItemsSource="{Binding Source={StaticResource ListPublisher}}"
                                   DisplayMemberPath="PublisherName"
                                   SelectedValuePath="Id"
+
+                                  
+                                  
                         />
-                    </StackPanel>
-                    <StackPanel Margin="10"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Top">
-                        <TextBlock Text="Select publication date"
-                                   Foreground="DarkGray"
-                                   FontSize="14"/>
-                        <DatePicker Name="ReleaseDatePicker" 
-                                SelectedDateFormat="Short" 
-                                Width="250"
-                                FontSize="20"
-                                SelectedDate="01.01.2022"
-                                Background="#353340"
-                        />
+                        
                     </StackPanel>
                     
                     <Border x:Name="addBPanel"
-                        Width="150"
-                        Height="50"
-                        Background="#22202f"
-                        BorderThickness="1"
-                        CornerRadius="10"
-                        Margin="0,50,0,0"
-                        Cursor="Hand" MouseLeftButtonDown="MLBDown_Done">
+                            Width="150"
+                            Height="50"
+                            Background="#22202f"
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Margin="0,50,0,0"
+                            Cursor="Hand" MouseLeftButtonDown="MLBDown_Done">
                         <Border.Style>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="BorderBrush" Value="DarkGray"/>
@@ -143,6 +143,9 @@
                                     <DataTrigger Binding="{Binding IsMouseOver, ElementName=addBPanel}"
                                              Value="True">
                                         <Setter Property="BorderBrush" Value="White"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=PublisherIdBox}" Value="">
+                                        <Setter Property="IsEnabled" Value="False"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>

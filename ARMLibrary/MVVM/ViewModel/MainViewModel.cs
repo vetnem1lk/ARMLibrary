@@ -14,19 +14,6 @@ namespace ARMLibrary.MVVM.ViewModel
         public BooksViewModel? BooksVM { get; set; }
         public ReadersViewModel? ReadersVM { get; set; }
 
-        private string _text;
-        public string CurrentText
-        {
-            get
-            {
-                return _text;
-            }
-            set
-            {
-                _text = value;
-                OnPropertyChanged(CurrentText);
-            }
-        }
 
         private object? _currentView;
 
@@ -60,8 +47,6 @@ namespace ARMLibrary.MVVM.ViewModel
                 CurrentView = ReadersVM;
             });
 
-            CurrentText = "Search";         
-            
         }
 
 

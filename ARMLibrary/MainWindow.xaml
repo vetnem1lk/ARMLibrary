@@ -16,8 +16,22 @@
         <viewModel:MainViewModel/>
     </Window.DataContext>
 
+
+    <Grid 
+
+    >
+        <Border CornerRadius="5"
+                Background="#5bc3ff"
+                BorderThickness="5">
+
+            <Border.Effect >
+                <BlurEffect Radius="6"/>
+            </Border.Effect>
+        </Border>
     <Border  Background="#272537"
-             CornerRadius="15">
+             CornerRadius="5"
+             BorderThickness="3"
+             Margin="1">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -55,7 +69,7 @@
                        HorizontalAlignment="Right"
                        Height="25" 
                        Width="25" 
-                       Margin="0,0,10,0" 
+                       Margin="0,0,5,15" 
                        MouseDown="ExBtn_MouseDown">
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
@@ -106,20 +120,19 @@
 
             <TextBox x:Name="SearchBoxMenu"
                      Width="400"
-                     Height="40"
+                     Grid.Row="0"
                      Margin="10,0,0,0"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"
                      Grid.Column="1"
-                     Style="{StaticResource ModernTextox}"
+                     Tag="Search"
+                     Style="{StaticResource TwitterTextBoxStyle}"
                      />
             <ScrollViewer Grid.Row="1"
                           Grid.Column="1"
-                      Margin="10"   
-                      >
+                          Margin="10">
+                <ContentControl Content="{Binding CurrentView}"/>
 
-                <ContentControl Name="ContentControlMain" 
-                    Content="{Binding Path=CurrentView, UpdateSourceTrigger=PropertyChanged}"/>
             </ScrollViewer>
 
 
@@ -127,5 +140,6 @@
         </Grid>
 
     </Border>
+    </Grid>
     
 </Window>

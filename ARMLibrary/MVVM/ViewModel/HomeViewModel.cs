@@ -24,12 +24,16 @@ namespace ARMLibrary.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
-
+        public RelayCommand TotalBooksCommand { get; set; }
 
         public HomeViewModel()
         {
             dbContext = new ARM_B023Context();
             TotalBooks = dbContext.Books.Count().ToString();
+            TotalBooksCommand = new RelayCommand(o =>
+            {
+                TotalBooks = dbContext.Books.Count().ToString();
+            });
         }
     }
 }

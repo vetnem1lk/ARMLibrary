@@ -43,12 +43,12 @@ namespace ARMLibrary.MVVM.View
             
         }
 
-        private void MLBDown_Done(object sender, MouseButtonEventArgs e)
+        private int GetPublisherId()
         {
             int id;
             if (PublisherIdBox.SelectedValue == null)
             {
-                Publisher publisher = Publisher.CreatePublisher(PublisherIdBox.Text);
+                var publisher = Publisher.CreatePublisher(PublisherIdBox.Text);
                 dbContext.Publishers.Add(publisher);
                 dbContext.SaveChanges();
                 id = publisher.Id;
@@ -57,26 +57,41 @@ namespace ARMLibrary.MVVM.View
             {
                 id = (int)PublisherIdBox.SelectedValue;
             }
+            return id;
+        }
+        private string GetTitle()
+        {
+            var title = TitleBox.Text == "" ? "Unknown title" : TitleBox.Text;
+            return title;
+        }
+        private string GetAuthor()
+        {
+            var author = AuthorBox.Text == "" ? "Unknown author" : AuthorBox.Text;
+            return author;
+        }
+        private DateTime GetRelease()
+        {
+            var release = ReleaseDatePicker.SelectedDate.Value;
+            return release;
+        }
 
+        private void MLBDown_Done(object sender, MouseButtonEventArgs e)
+        {
             try
             {
-                string title = TitleBox.Text;
-                string author = AuthorBox.Text;
-                DateTime releaseDateTime = ReleaseDatePicker.SelectedDate.Value;
-                int publisherID = id;
-
-                Book book = Book.CreateBook(title, author, releaseDateTime, publisherID);
-                History item = History.CreateHistory(title, author);
+                Book book = Book.CreateBook(GetTitle(), GetAuthor(), GetRelease(), GetPublisherId());
+                History item = History.CreateHistory(GetTitle(), GetAuthor());
                 dbContext.Histories.Add(item);
                 dbContext.Books.Add(book);
                 dbContext.SaveChanges();
+                DialogResult = true;
             }
             catch (DataServiceRequestException ex)
             {
                 throw new Exception(ex.Message);
             }
             
-            Close();
         }
+
     }
 }
