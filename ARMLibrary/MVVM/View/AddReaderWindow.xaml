@@ -82,7 +82,8 @@
                                  HorizontalAlignment="Left" 
                                  Name="FirstName" 
                                  VerticalAlignment="Center" 
-                                 Width="250" />
+                                 Width="245"
+                                 Margin="5,0,0,0"/>
                         <TextBlock HorizontalAlignment="Right"
                                    Grid.Row="0"
                                    VerticalAlignment="Center" 
@@ -97,7 +98,8 @@
                                  HorizontalAlignment="Left"
                                  Name="LastName"
                                  VerticalAlignment="Center"
-                                 Width="250" />
+                                 Width="245"
+                                 Margin="5,0,0,0" />
                         <TextBlock HorizontalAlignment="Right"
                                    Grid.Row="2" 
                                    VerticalAlignment="Center" 
@@ -126,7 +128,8 @@
                                  HorizontalAlignment="Left" 
                                  Name="textBox3"
                                  VerticalAlignment="Center" 
-                                 Width="250" />
+                                 Width="245"
+                                 Margin="5,0,0,0" />
                     </Grid>
 
                     <Border x:Name="addBPanel"
