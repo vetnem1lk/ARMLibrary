@@ -16,7 +16,7 @@ namespace ARMLibrary
 
         private static Reader _reader;
 
-        public static Reader CreateBook(string lastName, string firstName, string birthday, string email, string phone)
+        public static Reader CreateBook(string lastName, string firstName, string birthday, string phone, string email)
         {
             _reader = new Reader
             {

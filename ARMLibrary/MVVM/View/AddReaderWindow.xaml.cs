@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Services.Client;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,11 @@ namespace ARMLibrary.MVVM.View
     /// </summary>
     public partial class AddReaderWindow : Window
     {
+        public static ARM_B023Context dbContext { get; set; }
+
         public AddReaderWindow()
         {
+            dbContext = new ARM_B023Context();
             InitializeComponent();
         }
 
@@ -38,8 +42,43 @@ namespace ARMLibrary.MVVM.View
 
         private void MLBDown_Done(object sender, MouseButtonEventArgs e)
         {
-            
+            try
+            {
+                Reader reader= Reader.CreateBook(GetLastName(), GetFirstName(), GetBirthday(), GetPhoneNumber(), GetMail());
+                History item = History.CreateReaderHistory(GetLastName(),GetFirstName());
+                dbContext.Histories.Add(item);
+                dbContext.Readers.Add(reader);
+                dbContext.SaveChanges();
+                DialogResult = true;
+            }
+            catch (DataServiceRequestException ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
+        }
+
+        private string GetLastName()
+        {
+            return LastNameBox.Text;
+        }
+        private string GetFirstName()
+        {
+            return FirstNameBox.Text;
+        }
+
+        private string GetBirthday()
+        {
+            return BirthdateBox.Text;
+        }
+        private string GetPhoneNumber()
+        {
+            return PhoneBox.Text;
+        }
+
+        private string GetMail()
+        {
+            return EmailBox.Text;
         }
     }
 }

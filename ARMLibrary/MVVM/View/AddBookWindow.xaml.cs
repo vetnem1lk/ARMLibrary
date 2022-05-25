@@ -80,7 +80,7 @@ namespace ARMLibrary.MVVM.View
             try
             {
                 Book book = Book.CreateBook(GetTitle(), GetAuthor(), GetRelease(), GetPublisherId());
-                History item = History.CreateHistory(GetTitle(), GetAuthor());
+                History item = History.CreateBookHistory(GetTitle(), GetAuthor());
                 dbContext.Histories.Add(item);
                 dbContext.Books.Add(book);
                 dbContext.SaveChanges();
@@ -90,8 +90,6 @@ namespace ARMLibrary.MVVM.View
             {
                 throw new Exception(ex.Message);
             }
-            
         }
-
     }
 }

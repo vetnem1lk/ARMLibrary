@@ -34,11 +34,6 @@
     <Resource Include="Images\reading.png" />
     <Resource Include="Images\reject.png" />
   </ItemGroup>
-	<ItemGroup>
-
-
-		<Reference Include="VIBlend.WPF.Editors, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5f568d4f9cd901f1" />
-	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Services.Client" Version="5.8.5" />
@@ -53,6 +48,15 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="VIBlend.WPF.Editors">
+      <HintPath>VIBlend.WPF.Editors.dll</HintPath>
+    </Reference>
+    <Reference Include="VIBlend.WPF.Utilities">
+      <HintPath>VIBlend.WPF.Utilities.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

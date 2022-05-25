@@ -11,11 +11,19 @@ namespace ARMLibrary
         public string Item { get; set; }
 
         private static History _item;
-        public static History CreateHistory(string name, string author)
+        public static History CreateBookHistory(string name, string author)
         {
             _item = new History
             {
-                Item = "Book \"" + name + "\" by " + author + " is added to library"
+                Item = "Book \"" + name + "\" by " + author + " is added to library."
+            };
+            return _item;
+        }
+        public static History CreateReaderHistory(string lastName, string firstName)
+        {
+            _item = new History
+            {
+                Item =  lastName + " " + firstName + " become a reader!"
             };
             return _item;
         }
