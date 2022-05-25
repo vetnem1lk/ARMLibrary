@@ -46,5 +46,14 @@ namespace ARMLibrary.MVVM.View
             HistoryGrid.ItemsSource = ListHistory;
 
         }
+
+        private void AddReader_MLBDown(object sender, MouseButtonEventArgs e)
+        {
+            var addReaderWindow = new AddReaderWindow();
+            var result = addReaderWindow.ShowDialog();
+            if (result != true) return;
+            TotalReaders.Text = DbContext.Readers.Count().ToString();
+            UpdateHistory();
+        }
     }
 }

@@ -19,11 +19,10 @@ namespace ARMLibrary
             _publisher = new Publisher()
             {
                 PublisherName = name
-                
+
             };
             return _publisher;
         }
-
         public int Id { get; set; }
         public string PublisherName { get; set; }
 
