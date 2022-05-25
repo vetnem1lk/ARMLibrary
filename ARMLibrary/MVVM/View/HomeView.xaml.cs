@@ -1,28 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#nullable enable
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace ARMLibrary.MVVM.View
 {
-    /// <summary>
-    /// Логика взаимодействия для HomeView.xaml
-    /// </summary>
-    public partial class HomeView : UserControl
+    public partial class HomeView 
     {
+
+        public static ARM_B023Context? DbContext { get; set; }
+
+        private ObservableCollection<History> ListHistory { get; }
         public HomeView()
         {
+            DbContext = new ARM_B023Context();
             InitializeComponent();
+            ListHistory = new ObservableCollection<History>();
+        }
+
+        private void AddBook_MLBDown(object sender, MouseButtonEventArgs e)
+        {
+            var addBookWindow = new AddBookWindow();
+            var result = addBookWindow.ShowDialog();
+            if (result != true) return;
+            TotalBooks.Text = DbContext.Books.Count().ToString();
+            UpdateHistory();
+        }
+
+        private void UcLoaded(object sender, RoutedEventArgs e)
+        {
+            UpdateHistory();
+        }
+
+        private void UpdateHistory()
+        {
+            ListHistory.Clear();
+            var histories = DbContext.Histories;
+            var queryHistory = from history in histories orderby history.Id descending select history;
+            foreach (var history in queryHistory)
+            {
+                ListHistory.Add(history);
+            }
+            HistoryGrid.ItemsSource = ListHistory;
+
+        }
+
+        private void AddReader_MLBDown(object sender, MouseButtonEventArgs e)
+        {
+            var addReaderWindow = new AddReaderWindow();
+            var result = addReaderWindow.ShowDialog();
+            if (result != true) return;
+            TotalReaders.Text = DbContext.Readers.Count().ToString();
+            UpdateHistory();
         }
     }
 }

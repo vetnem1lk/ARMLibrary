@@ -5,9 +5,59 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ARMLibrary.MVVM.View"
              mc:Ignorable="d" 
+             xmlns:core ="clr-namespace:ARMLibrary.MVVM.Model"
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="#1B1B1B">
+             Background="Transparent" Loaded="UCLoaded">
+    <UserControl.Resources>
+        <core:ListPublisher x:Key="ListPublisher"/>
+        <DataTemplate x:Key="DateTemplate">
+            <TextBlock Text="{Binding Release, StringFormat={}{0:yyyy}}"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="EditingDateTemplate">
+            <DatePicker SelectedDate="{Binding Release, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
-            
+        <DataGrid x:Name="DataGridBooks"
+                  Background="#272537"
+                  GridLinesVisibility="All"
+                      ItemsSource="{Binding}"
+                      AutoGenerateColumns="False"
+                      RowBackground="#272537" 
+                      AlternatingRowBackground="#1B1B1B"
+                      BorderBrush="DarkGray"
+                      Margin="0,0,15,0"
+                      ColumnWidth="*"
+                      Foreground="White"
+                      FontSize="18"
+                  IsReadOnly="False">
+            <DataGrid.RowHeaderStyle>
+                <Style TargetType="{x:Type DataGridRowHeader}">
+                    <Setter Property="Background" Value="#1B1B1B"/>
+                </Style>
+            </DataGrid.RowHeaderStyle>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="DarkGray"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" 
+                                    Binding="{Binding Name, Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Author" 
+                                    Binding="{Binding Author, Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTemplateColumn Header="Release Date"
+                                        CellTemplate="{StaticResource DateTemplate}"
+                                        CellEditingTemplate="{StaticResource EditingDateTemplate}"/>
+                <DataGridComboBoxColumn Header="Publisher"
+                                        ItemsSource="{Binding Source={StaticResource ListPublisher}}"
+                                        DisplayMemberPath="PublisherName"
+                                        SelectedValueBinding="{Binding Path=PublisherId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectedValuePath="Id"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

@@ -5,8 +5,49 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ARMLibrary.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UCLoaded">
     <Grid>
-            
+        <DataGrid x:Name="DataGridReaders"
+                  Background="#272537"
+                  GridLinesVisibility="All"
+                      ItemsSource="{Binding}"
+                      AutoGenerateColumns="False"
+                      RowBackground="#272537" 
+                      AlternatingRowBackground="#1B1B1B"
+                      BorderBrush="DarkGray"
+                      Margin="0,0,15,0"
+                      ColumnWidth="*"
+                      Foreground="White"
+                      FontSize="18"
+                  IsReadOnly="False">
+            <DataGrid.RowHeaderStyle>
+                <Style TargetType="{x:Type DataGridRowHeader}">
+                    <Setter Property="Background" Value="#1B1B1B"/>
+                </Style>
+            </DataGrid.RowHeaderStyle>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="DarkGray"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Last Name" 
+                                    Binding="{Binding LastName, Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="First Name" 
+                                    Binding="{Binding FirstName, Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Birthday" 
+                                    Binding="{Binding Birthday, Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Email" 
+                                    Binding="{Binding Email, Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Phone" 
+                                    Binding="{Binding Phone, Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

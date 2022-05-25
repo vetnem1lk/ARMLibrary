@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ARMLibrary.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,12 @@ namespace ARMLibrary
     {
         public MainWindow()
         {
+
             InitializeComponent();
+
         }
+
+
 
         private void ExBtn_MouseDown(object sender, MouseButtonEventArgs e)
         {
