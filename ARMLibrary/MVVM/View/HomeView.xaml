@@ -236,7 +236,7 @@
                         Background="#a358e8"
                         CornerRadius="5"
                         x:Name="WPanel"
-                        Cursor="Hand">
+                        Cursor="Hand" MouseLeftButtonDown="Remove_MLBDown">
                         <TextBlock Text="WRITE-OFF&#x0a;  A BOOK"
                                FontSize="15"
                                FontFamily="/Fonts/#Poppins-Bold"

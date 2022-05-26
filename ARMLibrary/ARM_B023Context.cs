@@ -1,15 +1,25 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿
 
 #nullable disable
+
+using System;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace ARMLibrary
 {
     public partial class ARM_B023Context : DbContext
     {
+        private string connectionString;
         public ARM_B023Context()
         {
+            var builder = new ConfigurationBuilder();
+            builder.SetBasePath(Directory.GetCurrentDirectory());
+            builder.AddJsonFile("appsettings.json");
+            var config = builder.Build();
+            connectionString = config.GetConnectionString("TestConnection");
         }
 
         public ARM_B023Context(DbContextOptions<ARM_B023Context> options)
@@ -26,8 +36,7 @@ namespace ARMLibrary
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=10.0.22.5;Initial Catalog=ARM_B023;User ID=ARM_B023;Password=ARM_023ka;");
+                optionsBuilder.UseSqlServer(connectionString);
             }
         }
 

@@ -58,7 +58,7 @@
                            Foreground="White"
                            FontSize="22"/>
                     <Grid VerticalAlignment="Center" HorizontalAlignment="Center"
-                          Margin="0,30,0,0">
+                          Margin="0,50,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"></RowDefinition>
                             <RowDefinition Height="40"></RowDefinition>
@@ -113,7 +113,7 @@
                                                        Style="{StaticResource TwitterTextBoxStyle}"
                                                        HorizontalAlignment="Left" 
                                                        Name="BirthdateBox" 
-                                                       VerticalContentAlignment="Bottom" 
+                                                       VerticalContentAlignment="Bottom"
                                                        Width="245"
                                                        FontSize="15"
                                                        Margin="5,0,0,0"

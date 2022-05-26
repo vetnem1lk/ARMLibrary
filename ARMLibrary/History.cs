@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 
 #nullable disable
+
+using System;
+using System.Collections.Generic;
+using ARMLibrary.MVVM.Model;
 
 namespace ARMLibrary
 {
@@ -24,6 +27,16 @@ namespace ARMLibrary
             _item = new History
             {
                 Item =  lastName + " " + firstName + " become a reader!"
+            };
+            return _item;
+        }
+
+        public static History CreateRemoveHistory(int id, string reason)
+        {
+            ListBook listBook = new ListBook();
+            _item = new History
+            {
+                Item = "Book \"" + listBook[id].Name + "\" written off! Reason: " + reason
             };
             return _item;
         }

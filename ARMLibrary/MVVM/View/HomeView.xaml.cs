@@ -55,5 +55,14 @@ namespace ARMLibrary.MVVM.View
             TotalReaders.Text = DbContext.Readers.Count().ToString();
             UpdateHistory();
         }
+
+        private void Remove_MLBDown(object sender, MouseButtonEventArgs e)
+        {
+            var removeWindow = new RemoveBookWindow();
+            var result = removeWindow.ShowDialog();
+            if (result != true) return;
+            TotalBooks.Text = DbContext.Books.Count().ToString();
+            UpdateHistory();
+        }
     }
 }
